@@ -1,0 +1,5 @@
+IO.puts File.open!("input.txt")
+  |> IO.stream(:line)
+  |> Stream.map(&String.split/1)
+  |> Stream.map(fn(x) -> Enum.max_by(x, &String.length/1) end)
+  |> Enum.max_by(&String.length/1)
